@@ -1,0 +1,38 @@
+# CLASS HIERARCHY
+
+WebAutomation (Base Class)
+│
+├── init(driver, number)
+│ └── Creates WebDriverWait with 20-second timeout
+│
+├── XPATH(t)
+│ └── Sends keys to first input + clicks via XPath
+│
+├── send_keys(ID=None)
+│ ├── If ID: Use specific input ID
+│ └── Else: Use first input tag
+│
+└── click(ID=None, CSS_SELECTOR=None)
+├── If ID: Click by ID
+├── Else if CSS_SELECTOR: Click by CSS selector
+└── Else: Click first button
+
+↓
+↓ (Inheritance)
+↓
+
+SiteHandler (Derived Class)
+│
+├── digimark()
+│ └── Digimark AI login process
+│
+├── get_XPATHS()
+│ ├── Jabama: XPATH()
+│ └── Namava: XPATH()
+│
+├── get_ID()
+│ ├── Stage 1: send_keys() + click(ID)
+│ └── Stage 2: send_keys(ID) + click()
+│
+└── urls()
+└── For each URL: send_keys() + click()
